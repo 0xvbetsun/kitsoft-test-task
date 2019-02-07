@@ -3,7 +3,6 @@ const compression = require('compression');
 const express = require('express');
 const helmet = require('helmet');
 const logger = require('morgan');
-const { join } = require('path');
 const {
   middlewares: { errorHandler }
 } = require('common');
@@ -21,7 +20,6 @@ app.use(compression());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(join(__dirname, '..', 'files')));
 
 /**
  * Configure routes

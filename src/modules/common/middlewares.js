@@ -39,10 +39,11 @@ const methodNotAllowed = (req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
   // set locals, only providing error in development
-  res.locals.message = err.message;
+  const { message, status } = err;
+  res.locals.message = message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  res.status(err.status || 500).send(err);
+  res.status(status || 500).json({ message });
 };
 
 module.exports = { asyncHandler, methodNotAllowed, errorHandler };
