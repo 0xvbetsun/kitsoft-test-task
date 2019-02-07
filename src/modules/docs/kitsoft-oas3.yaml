@@ -37,6 +37,55 @@ paths:
           $ref: '#components/responses/404'
         405:
           $ref: '#components/responses/405'
+  /file/{fileName}:
+    parameters:
+      - $ref: '#components/parameters/FileName'
+    get:
+      tags:
+        - Storage
+      summary: Download file
+      description: Download decrypted file from the server
+      responses:
+        200:
+          description: Successful downloading
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: binary
+        404:
+          $ref: '#components/responses/404'
+        405:
+          $ref: '#components/responses/405'
+    post:
+      tags:
+        - Storage
+      summary: Upload file
+      description: Upload file from the server
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        204:
+          description: Successful uploading
+          content:
+            application/json:
+              schema: {}
+        404:
+          $ref: '#components/responses/404'
+        405:
+          $ref: '#components/responses/405'
+        409:
+          $ref: '#components/responses/405'
+        422:
+          $ref: '#components/responses/405'
 components:
   schemas:
     Error:
@@ -76,6 +125,16 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: 'Unprocessable Entity'
+  parameters:
+    FileName:
+      name: fileName
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'file-name.jpg'
 tags:
   - name: System
     description: System Endpoints
+  - name: Storage
+    description: Endpoints for manipulations with files
