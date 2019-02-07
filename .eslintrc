@@ -1,0 +1,26 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["jest", "prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "no-sync": "error",
+    "handle-callback-err": "error",
+    "no-path-concat": "error",
+    "no-buffer-constructor": "error",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src/modules"]
+      }
+    }
+  },
+  "env": {
+    "jest/globals": true
+  }
+}
