@@ -13,9 +13,9 @@ class StorageEngine {
   }
 
   _handleFile(req, file, next) {
-    const path = `./${this.destination}/${req.params.fileName}.${file.ext}`;
+    const path = `./${this.destination}/${req.params.fileName}`;
     const outStream = fs.createWriteStream(path);
-    file.stream.pipe(outStream);
+    file.stream.pipe(FileEcryptionService.encrypt()).pipe(outStream);
     outStream.on('error', next);
     outStream.on('finish', () => {
       next(null, {
@@ -23,10 +23,6 @@ class StorageEngine {
         size: outStream.bytesWritten
       });
     });
-    // file.stream
-    //   .pipe(FileEcryptionService.encrypt())
-    //   .on('finish', () => next(null, { writePath }))
-    //   .on('error', next);
   }
 
   _removeFile(req, file, next) {

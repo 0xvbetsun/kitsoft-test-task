@@ -1,16 +1,17 @@
-const crypto = require('crypto');
-const zlib = require('zlib');
+const { createCipheriv, createDecipheriv } = require('crypto');
+const config = require('config');
 
-const algorithm = 'aes-256-ctr';
-const password = 'd6F3Efeq';
+const algorithm = config.get('cipherAlgorithm');
+const key = config.get('cipherKey');
+const initVect = config.get('cipherIV');
 
 class FileEcryptionService {
   static encrypt() {
-    return crypto.createCipher(algorithm, password);
+    return createCipheriv(algorithm, key, initVect);
   }
 
   static decrypt() {
-    return crypto.createDecipher(algorithm, password);
+    return createDecipheriv(algorithm, key, initVect);
   }
 }
 
