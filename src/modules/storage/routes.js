@@ -2,13 +2,15 @@ const {
   middlewares: { methodNotAllowed }
 } = require('common');
 const { upload, download } = require('./controller');
-const { multipart, extensionValidator } = require('./middleware');
+const { multipart, fileNameValidator } = require('./middleware');
 
 module.exports = router => {
+  router.param('fileName', fileNameValidator);
   router
-    .get('/file/:fileName', extensionValidator, download)
-    .post('/file/:fileName', extensionValidator, multipart.single('file'), upload)
-    .all('/file/:fileName', methodNotAllowed);
+    .route('/file/:fileName')
+    .get(download)
+    .post(multipart.single('file'), upload)
+    .all(methodNotAllowed);
 
   return router;
 };
