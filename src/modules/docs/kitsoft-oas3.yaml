@@ -86,6 +86,143 @@ paths:
           $ref: '#components/responses/405'
         422:
           $ref: '#components/responses/405'
+  /redirect/{url}:
+    parameters:
+      - $ref: '#components/parameters/URL'
+    get:
+      tags:
+        - Delegation
+      summary: Redirect to url
+      description: Redirect to url what passed in query path
+      responses:
+        302:
+          description: Successful downloading
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    post:
+      tags:
+        - Delegation
+      summary: Redirect to url
+      description: Redirect to url what passed in query path
+      responses:
+        302:
+          description: Successful downloading
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    put:
+      tags:
+        - Delegation
+      summary: Redirect to url
+      description: Redirect to url what passed in query path
+      responses:
+        302:
+          description: Successful downloading
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    patch:
+      tags:
+        - Delegation
+      summary: Redirect to url
+      description: Redirect to url what passed in query path
+      responses:
+        302:
+          description: Successful downloading
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    delete:
+      tags:
+        - Delegation
+      summary: Redirect to url
+      description: Redirect to url what passed in query path
+      responses:
+        302:
+          description: Successful downloading
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+  /proxy/{url}:
+    parameters:
+      - $ref: '#components/parameters/URL'
+    get:
+      tags:
+        - Delegation
+      summary: Proxy from url
+      description: Proxy from url what passed in query path
+      responses:
+        200:
+          description: Successful proxy
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    post:
+      tags:
+        - Delegation
+      summary: Proxy from url
+      description: Proxy from url what passed in query path
+      responses:
+        200:
+          description: Successful proxy
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    put:
+      tags:
+        - Delegation
+      summary: Proxy from url
+      description: Proxy from url what passed in query path
+      responses:
+        200:
+          description: Successful proxy
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    patch:
+      tags:
+        - Delegation
+      summary: Proxy from url
+      description: Proxy from url what passed in query path
+      responses:
+        200:
+          description: Successful proxy
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+    delete:
+      tags:
+        - Delegation
+      summary: Proxy from url
+      description: Proxy from url what passed in query path
+      responses:
+        200:
+          description: Successful proxy
+          content:
+            '*/*':
+              schema: {}
+        422:
+          $ref: '#components/responses/422'
+
 components:
   schemas:
     Error:
@@ -133,8 +270,17 @@ components:
       schema:
         type: string
         example: 'file-name.jpg'
+    URL:
+      name: url
+      in: path
+      required: true
+      schema:
+        type: string
+        example: https://www.google.com
 tags:
   - name: System
     description: System Endpoints
   - name: Storage
     description: Endpoints for manipulations with files
+  - name: Delegation
+    description: Endpoints for delegated processing

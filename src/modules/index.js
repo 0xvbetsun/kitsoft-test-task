@@ -1,5 +1,6 @@
 const { routes: systemRoutes } = require('system');
-const { routes: docsRoutes } = require('docs');
 const { routes: storageRoutes } = require('storage');
+const { routes: delegationRoutes } = require('delegation');
+const { routes: docsRoutes } = require('docs');
 
-module.exports = { routes: [systemRoutes, docsRoutes, storageRoutes] };
+module.exports = { routes: [systemRoutes, delegationRoutes, storageRoutes, docsRoutes] };

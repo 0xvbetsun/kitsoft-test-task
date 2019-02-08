@@ -35,9 +35,37 @@ describe('Test the "Storage" endpoints', () => {
     expect(fileStat.isFile()).toBeTruthy();
   });
 
+  test('Restrict uploading files with same name', async () => {
+    const { status, type, body } = await request(app)
+      .post('/api/file/file-name.jpg')
+      .attach('file', testImage, { contentType: 'multipart/form-data' });
+
+    expect(status).toEqual(409);
+    expect(type).toEqual('application/json');
+    expect(body.message).toEqual('File with the same name already exists.');
+  });
+
+  test('Restrict uploading file without extension', async () => {
+    const { status, type, body } = await request(app)
+      .post('/api/file/file-name-without-extension')
+      .attach('file', testImage, { contentType: 'multipart/form-data' });
+
+    expect(status).toEqual(422);
+    expect(type).toEqual('application/json');
+    expect(body.message).toEqual('Name of file without extension. Please recheck query string.');
+  });
+
   test('Successful File Download', async () => {
-    const { status } = await request(app).get('/api/file/file-name.jpg');
+    const { status, type } = await request(app).get('/api/file/file-name.jpg');
+    expect(type).toEqual('image/jpeg');
     expect(status).toEqual(200);
+  });
+
+  test('Correct response when try to donload not existed file', async () => {
+    const { status, type, body } = await request(app).get('/api/file/not-existed-file.jpg');
+    expect(status).toEqual(404);
+    expect(type).toEqual('application/json');
+    expect(body.message).toEqual('Requested file does not exists. Please recheck query params.');
   });
 
   test('Restricted not allowed methods', async () => {

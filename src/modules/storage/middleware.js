@@ -46,20 +46,20 @@ const fileFilter = async ({ params: { fileName } }, file, next) => {
 const multipart = multer({ storage, limits, fileFilter });
 
 /**
- * Middleware for file extension validation
+ * Middleware for file name validation
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @param {Function} next - Express next middleware function
  * @returns {void}
  */
-const extensionValidator = ({ params: { fileName } }, res, next) => {
+const fileNameValidator = ({ params: { fileName } }, res, next) => {
   const ext = fileName.split('.').pop();
 
   if (ext === fileName) {
-    next(createError(422, 'Name of file without extension. Please recheck query params.'));
+    next(createError(422, 'Name of file without extension. Please recheck query string.'));
   }
   next();
 };
 
-module.exports = { multipart, extensionValidator };
+module.exports = { multipart, fileNameValidator };
