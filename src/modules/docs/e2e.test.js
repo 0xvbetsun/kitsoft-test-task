@@ -10,7 +10,7 @@ describe('Test the Docs availability', () => {
   });
 
   test('Restricted not allowed methods', async () => {
-    const { status, type, body } = await request(app).post('/api/test/ping');
+    const { status, type, body } = await request(app).post('/api/doc');
     expect(status).toEqual(405);
     expect(type).toEqual('application/json');
     expect(body).toEqual({ message: 'Method Not Allowed' });

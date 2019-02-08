@@ -3,10 +3,12 @@ const compression = require('compression');
 const express = require('express');
 const helmet = require('helmet');
 const logger = require('morgan');
-const { join } = require('path');
 const {
   middlewares: { errorHandler }
 } = require('common');
+const {
+  middlewares: { responseTime }
+} = require('system');
 const { routes } = require('./modules');
 
 const app = express();
@@ -14,6 +16,7 @@ const app = express();
 /**
  * Enable middlewares
  */
+app.use(responseTime);
 if (app.get('env') !== 'production') {
   app.use(logger('dev'));
 }
@@ -21,7 +24,6 @@ app.use(compression());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(join(__dirname, '..', 'files')));
 
 /**
  * Configure routes

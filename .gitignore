@@ -38,6 +38,3 @@ node_modules/
 
 # vscode configurations
 .vscode/
-
-# static files in this project
-files/*
