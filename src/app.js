@@ -6,6 +6,9 @@ const logger = require('morgan');
 const {
   middlewares: { errorHandler }
 } = require('common');
+const {
+  middlewares: { responseTime }
+} = require('system');
 const { routes } = require('./modules');
 
 const app = express();
@@ -13,6 +16,7 @@ const app = express();
 /**
  * Enable middlewares
  */
+app.use(responseTime);
 if (app.get('env') !== 'production') {
   app.use(logger('dev'));
 }

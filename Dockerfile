@@ -1,4 +1,4 @@
-FROM node:latest
+FROM keymetrics/pm2:latest-alpine
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -15,5 +15,8 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
-EXPOSE 6000
-CMD ["npm", "start"]
+EXPOSE 3000
+# Show current folder structure in logs
+RUN ls -al -R
+
+CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "production" ]

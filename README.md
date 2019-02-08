@@ -23,5 +23,5 @@ docker build --rm -t <your-name>/kitsoft-test-task .
 2. Run:
 
 ```
-docker run --rm -p 6000:6000 <your-name>/kitsoft-test-task
+docker run --rm -p 3000:3000 <your-name>/kitsoft-test-task
 ```
