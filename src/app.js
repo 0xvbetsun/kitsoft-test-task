@@ -27,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 
 /**
  * Configure routes
+ * TODO: async handler for doc route
  */
 const apiRouter = express.Router();
 routes.forEach(connectModule => connectModule(apiRouter));

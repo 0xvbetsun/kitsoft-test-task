@@ -4,7 +4,7 @@
   "scripts": {
     "start": "pm2 start ecosystem.config.js --env production",
     "dev": "NODE_PATH=src/modules/ DEBUG=app:* nodemon ./bin/www",
-    "test": "NODE_PATH=src/modules/ jest --coverage"
+    "test": "NODE_PATH=src/modules/ jest --coverage --runInBand"
   },
   "dependencies": {
     "compression": "^1.7.3",
@@ -13,13 +13,13 @@
     "express": "~4.16.0",
     "helmet": "^3.15.0",
     "http-errors": "~1.6.2",
+    "json-refs": "^3.0.12",
     "mime-types": "^2.1.21",
     "morgan": "~1.9.0",
     "multer": "^1.4.1",
     "pm2": "^3.2.9",
     "request": "^2.88.0",
-    "swagger-ui-express": "^4.0.2",
-    "yamljs": "^0.3.0"
+    "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
     "eslint": "^5.13.0",

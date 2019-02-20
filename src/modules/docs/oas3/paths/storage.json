@@ -1,0 +1,76 @@
+{
+  "/file/{fileName}": {
+    "parameters": [
+      {
+        "$ref": "./../components.json#/parameters/FileName"
+      }
+    ],
+    "get": {
+      "tags": ["Storage"],
+      "summary": "Download file",
+      "description": "Download decrypted file from the server",
+      "responses": {
+        "200": {
+          "description": "Successful downloading",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "404": {
+          "$ref": "./../components.json#/responses/404"
+        },
+        "405": {
+          "$ref": "./../components.json#/responses/405"
+        }
+      }
+    },
+    "post": {
+      "tags": ["Storage"],
+      "summary": "Upload file",
+      "description": "Upload file from the server",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "204": {
+          "description": "Successful uploading",
+          "content": {
+            "application/json": {
+              "schema": {}
+            }
+          }
+        },
+        "404": {
+          "$ref": "./../components.json#/responses/404"
+        },
+        "405": {
+          "$ref": "./../components.json#/responses/405"
+        },
+        "409": {
+          "$ref": "./../components.json#/responses/405"
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/405"
+        }
+      }
+    }
+  }
+}

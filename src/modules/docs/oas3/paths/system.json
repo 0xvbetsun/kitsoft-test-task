@@ -1,0 +1,42 @@
+{
+  "/test/ping": {
+    "get": {
+      "tags": ["System"],
+      "summary": "Checks server availability",
+      "description": "Get information of server availability and request duration",
+      "responses": {
+        "200": {
+          "description": "Successful fetching data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "type": "string",
+                    "example": "pong"
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "handlingTime": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 123.456
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "$ref": "./../components.json#/responses/404"
+        },
+        "405": {
+          "$ref": "./../components.json#/responses/405"
+        }
+      }
+    }
+  }
+}

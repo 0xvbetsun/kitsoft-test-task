@@ -4,6 +4,7 @@
     "checkJs": true,
     "baseUrl": "./src/modules",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "paths": {
       "*": ["*"]
     }

@@ -1,0 +1,196 @@
+{
+  "/redirect/{url}": {
+    "parameters": [
+      {
+        "$ref": "./../components.json#/parameters/URL"
+      }
+    ],
+    "get": {
+      "tags": ["Delegation"],
+      "summary": "Redirect to url",
+      "description": "Redirect to url what passed in query path",
+      "responses": {
+        "302": {
+          "description": "Successful downloading",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "post": {
+      "tags": ["Delegation"],
+      "summary": "Redirect to url",
+      "description": "Redirect to url what passed in query path",
+      "responses": {
+        "302": {
+          "description": "Successful downloading",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "put": {
+      "tags": ["Delegation"],
+      "summary": "Redirect to url",
+      "description": "Redirect to url what passed in query path",
+      "responses": {
+        "302": {
+          "description": "Successful downloading",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "patch": {
+      "tags": ["Delegation"],
+      "summary": "Redirect to url",
+      "description": "Redirect to url what passed in query path",
+      "responses": {
+        "302": {
+          "description": "Successful downloading",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "delete": {
+      "tags": ["Delegation"],
+      "summary": "Redirect to url",
+      "description": "Redirect to url what passed in query path",
+      "responses": {
+        "302": {
+          "description": "Successful downloading",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    }
+  },
+  "/proxy/{url}": {
+    "parameters": [
+      {
+        "$ref": "./../components.json#/parameters/URL"
+      }
+    ],
+    "get": {
+      "tags": ["Delegation"],
+      "summary": "Proxy from url",
+      "description": "Proxy from url what passed in query path",
+      "responses": {
+        "200": {
+          "description": "Successful proxy",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "post": {
+      "tags": ["Delegation"],
+      "summary": "Proxy from url",
+      "description": "Proxy from url what passed in query path",
+      "responses": {
+        "200": {
+          "description": "Successful proxy",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "put": {
+      "tags": ["Delegation"],
+      "summary": "Proxy from url",
+      "description": "Proxy from url what passed in query path",
+      "responses": {
+        "200": {
+          "description": "Successful proxy",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "patch": {
+      "tags": ["Delegation"],
+      "summary": "Proxy from url",
+      "description": "Proxy from url what passed in query path",
+      "responses": {
+        "200": {
+          "description": "Successful proxy",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    },
+    "delete": {
+      "tags": ["Delegation"],
+      "summary": "Proxy from url",
+      "description": "Proxy from url what passed in query path",
+      "responses": {
+        "200": {
+          "description": "Successful proxy",
+          "content": {
+            "*/*": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "$ref": "./../components.json#/responses/422"
+        }
+      }
+    }
+  }
+}

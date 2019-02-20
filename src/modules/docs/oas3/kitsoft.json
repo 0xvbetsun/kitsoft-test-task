@@ -1,0 +1,46 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "KitSoft Test API",
+    "description": "REST API for KitSoft Test Project",
+    "termsOfService": "",
+    "contact": {
+      "email": "vlad.betcun@gmail.com"
+    },
+    "version": "v1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/test/ping": {
+      "$ref": "./src/modules/docs/oas3/paths/system.json#/~1test~1ping"
+    },
+    "/file/{fileName}": {
+      "$ref": "./src/modules/docs/oas3/paths/storage.json#/~1file~1{fileName}"
+    },
+    "/redirect/{url}": {
+      "$ref": "./src/modules/docs/oas3/paths/delegation.json#/~1redirect~1{url}"
+    },
+    "/proxy/{url}": {
+      "$ref": "./src/modules/docs/oas3/paths/delegation.json#/~1proxy~1{url}"
+    }
+  },
+  "tags": [
+    {
+      "name": "System",
+      "description": "System Endpoints"
+    },
+    {
+      "name": "Storage",
+      "description": "Endpoints for manipulations with files"
+    },
+    {
+      "name": "Delegation",
+      "description": "Endpoints for delegated processing"
+    }
+  ]
+}
